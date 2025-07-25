@@ -7,27 +7,29 @@ This is a console-based **Employee Management System** built using Java and MySQ
 ## 📁 Project Structure
 
 src/
-├── Database.sql # SQL script to create and populate database tables
+│
+├── Database.sql                         # SQL script to create and populate database tables
 │
 ├── com/demo/client/
-│ └── ClientApp.java # Main class with menu-driven interaction
+│   └── ClientApp.java                   # Main class with menu-driven interaction
 │
 ├── com/demo/dao/
-│ ├── EmployeeDao.java # DAO interface for employee operations
-│ └── EmployeeDaoImpl.java # DAO implementation using JDBC
+│   ├── EmployeeDao.java                 # DAO interface for employee operations
+│   └── EmployeeDaoImpl.java             # DAO implementation using JDBC
 │
 ├── com/demo/exception/
-│ └── EmployeeException.java # Custom exception class
+│   └── EmployeeException.java           # Custom exception class
 │
 ├── com/demo/model/
-│ └── Employee.java # POJO representing the Employee entity
+│   └── Employee.java                    # POJO representing the Employee entity
 │
 ├── com/demo/service/
-│ ├── EmployeeService.java # Service interface for business logic
-│ └── EmployeeServiceImpl.java # Service implementation
+│   ├── EmployeeService.java             # Service interface for business logic
+│   └── EmployeeServiceImpl.java         # Service implementation
 │
 └── com/demo/util/
-└── DbUtil.java # Utility for establishing DB connection
+    └── DbUtil.java                      # Utility for establishing DB connection
+
 
 
 ---

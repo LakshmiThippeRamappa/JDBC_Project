@@ -1,64 +1,68 @@
- Project Overview
-This Java project is a console-based Employee Management System. It performs CRUD (Create, Read, Update, Delete) operations on employee records stored in a MySQL database. The application follows a layered architecture, separating concerns via DAO, Service, and Client layers.
+# 🧑‍💼 Employee Management System (Console-Based - Java + MySQL)
 
-📁 Project Structure
+This is a console-based **Employee Management System** built using Java and MySQL. It allows CRUD operations on employee records through a menu-driven interface. The application is structured using a layered architecture (DAO, Service, Client) for clean separation of concerns.
+
+---
+
+## 📁 Project Structure
+
 src/
-│
-├── Database.sql                         # SQL script to create and populate database tables
+├── Database.sql # SQL script to create and populate database tables
 │
 ├── com/demo/client/
-│   └── ClientApp.java                   # Main class with menu-driven interaction
+│ └── ClientApp.java # Main class with menu-driven interaction
 │
 ├── com/demo/dao/
-│   ├── EmployeeDao.java                 # DAO interface for employee operations
-│   └── EmployeeDaoImpl.java             # DAO implementation using JDBC
+│ ├── EmployeeDao.java # DAO interface for employee operations
+│ └── EmployeeDaoImpl.java # DAO implementation using JDBC
 │
 ├── com/demo/exception/
-│   └── EmployeeException.java           # Custom exception class
+│ └── EmployeeException.java # Custom exception class
 │
 ├── com/demo/model/
-│   └── Employee.java                    # POJO representing the Employee entity
+│ └── Employee.java # POJO representing the Employee entity
 │
 ├── com/demo/service/
-│   ├── EmployeeService.java             # Service interface for business logic
-│   └── EmployeeServiceImpl.java         # Service implementation
+│ ├── EmployeeService.java # Service interface for business logic
+│ └── EmployeeServiceImpl.java # Service implementation
 │
 └── com/demo/util/
-    └── DbUtil.java                      # Utility for establishing DB connection
-
-🧪 Technologies Used
-Java (Core + JDBC)
-
-MySQL
-
-Exception Handling
-
-Collections (if applicable)
-
-MVC Architecture (Simulated via DAO-Service-Client layers)
+└── DbUtil.java # Utility for establishing DB connection
 
 
-🚀 Features
-Add new employee details
+---
 
-View all employee records
+## 🧪 Technologies Used
 
-Update employee information
+- Java (Core, JDBC)
+- MySQL
+- Exception Handling
+- Collections Framework (if applicable)
+- MVC (Layered Architecture Simulation via DAO-Service-Client)
 
-Delete employee records
+---
 
-Handle exceptions gracefully using custom exception class
+## 🚀 Features
 
-JDBC-based database operations with prepared statements
+- ✅ Add new employee details
+- 📋 View all employee records
+- ✏️ Update existing employee information
+- 🗑️ Delete employee records
+- 🔐 Custom exception handling using `EmployeeException`
+- 🔄 Database interaction using **JDBC** and **PreparedStatement**
+- 💡 Modular design (separation of business logic, data access, and presentation)
 
-⚙️ How to Run
+---
 
-Set up MySQL database:
+## ⚙️ How to Run
 
-Use Database.sql to create the necessary table(s).
+### 1️⃣ Set Up MySQL Database
+- Create the database and table by executing `Database.sql` in your MySQL environment.
 
-Update your DB credentials in DbUtil.java.
+### 2️⃣ Configure DB Credentials
+- Open `DbUtil.java` and set your **MySQL username, password, and database URL**.
 
-Compile Java files:  javac src/com/demo/**/*.java
+### 3️⃣ Compile the Project
 
-Run the main application:  java com.demo.client.ClientApp
+```bash
+javac -d bin src/com/demo/**/*.java

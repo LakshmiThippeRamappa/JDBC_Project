@@ -1,0 +1,37 @@
+package com.dms.service;
+
+import com.dms.dao.DepartmentDao;
+import com.dms.dao.DepartmentDaoImpl;
+import com.dms.model.Department;
+
+import java.util.List;
+
+public class DepartmentServiceImpl implements DepartmentService {
+
+    private DepartmentDao dao = new DepartmentDaoImpl();
+
+    @Override
+    public void addDepartment(Department dept) {
+        dao.addDepartment(dept);
+    }
+
+    @Override
+    public Department getDepartmentById(int id) {
+        return dao.getDepartmentById(id);
+    }
+
+    @Override
+    public List<Department> getAllDepartments() {
+        return dao.getAllDepartments();
+    }
+
+    @Override
+    public boolean updateDepartment(Department dept) {
+        return dao.updateDepartment(dept);
+    }
+
+    @Override
+    public boolean deleteDepartment(int id) {
+        return dao.deleteDepartment(id);
+    }
+}

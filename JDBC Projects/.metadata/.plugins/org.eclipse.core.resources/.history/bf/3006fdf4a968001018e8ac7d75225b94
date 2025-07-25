@@ -1,0 +1,88 @@
+package com.dms.client;
+
+import com.dms.exception.DepartmentNotFoundException;
+import com.dms.model.Department;
+import com.dms.service.DepartmentService;
+import com.dms.service.DepartmentServiceImpl;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainApp {
+    public static void main(String[] args) throws DepartmentNotFoundException {
+        DepartmentService service = new DepartmentServiceImpl();
+        Scanner sc = new Scanner(System.in);
+        char again;
+
+        do {
+            System.out.println("\n--- Department Management System ---");
+            System.out.println("1. Add Department");
+            System.out.println("2. Get Department by ID");
+            System.out.println("3. View All Departments");
+            System.out.println("4. Update Department");
+            System.out.println("5. Delete Department");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Department Name: ");
+                    sc.nextLine(); // consume newline
+                    String name = sc.nextLine();
+                    System.out.print("Enter location: ");
+                    String location = sc.nextLine();
+                    service.addDepartment(new Department(0, name, location));
+                    System.out.println("Department added.");
+                    break;
+                case 2:
+                    System.out.print("Enter Dept ID: ");
+                    Department dept = service.getDepartmentById(sc.nextInt());
+                    System.out.println(dept != null ? dept : "Department not found.");
+                    break;
+                case 3:
+                    List<Department> list = service.getAllDepartments();
+                    list.forEach(System.out::println);
+                    break;
+                case 4:
+                	System.out.print("Enter Department ID to update: ");
+                	int id = scanner.nextInt();
+                	scanner.nextLine(); // consume newline
+
+                	try {
+                	    // Check if department with this ID exists first
+                	    Department existingDept = service.getDepartmentById(id);
+
+                	    // If no exception thrown, proceed to update
+                	    System.out.print("Enter new Department Name: ");
+                	    String name = scanner.nextLine();
+
+                	    System.out.print("Enter new Location: ");
+                	    String location = scanner.nextLine();
+
+                	    Department updatedDept = new Department(id, name, location);
+                	    service.updateDepartment(updatedDept);
+                	    System.out.println("Department updated successfully.");
+
+                	} catch (DepartmentNotFoundException e) {
+                	    System.out.println(e.getMessage());
+                	}
+                    break;
+                case 5:
+                    System.out.print("Enter ID to delete: ");
+                    boolean deleted = service.deleteDepartment(sc.nextInt());
+                    System.out.println(deleted ? "Deleted successfully." : "Deletion failed.");
+                    break;
+                case 6:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+            System.out.print("Back to Menu? (Y/N): ");
+            again = sc.next().charAt(0);
+        }
+        while (again == 'Y' || again == 'y');
+        System.out.println("Happy Day!");
+    }
+}

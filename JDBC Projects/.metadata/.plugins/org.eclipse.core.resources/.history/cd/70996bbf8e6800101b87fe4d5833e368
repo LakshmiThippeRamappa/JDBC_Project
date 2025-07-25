@@ -1,0 +1,10 @@
+Added 1 jar file--
+
+mysql-connector-j-9.4.0.jar
+
+process:
+on project 
+	-right click
+		-Build Path
+			-Add External Archives
+			

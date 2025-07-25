@@ -1,0 +1,69 @@
+package com.dms.client;
+
+import com.dms.model.Department;
+import com.dms.service.DepartmentService;
+import com.dms.service.DepartmentServiceImpl;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainApp {
+    public static void main(String[] args) {
+        DepartmentService service = new DepartmentServiceImpl();
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n--- Department Management System ---");
+            System.out.println("1. Add Department");
+            System.out.println("2. Get Department by ID");
+            System.out.println("3. View All Departments");
+            System.out.println("4. Update Department");
+            System.out.println("5. Delete Department");
+            System.out.println("6. Exit");
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Department Name: ");
+                    sc.nextLine(); // consume newline
+                    String name = sc.nextLine();
+                    System.out.print("Enter location: ");
+                    String location = sc.nextLine();
+                    service.addDepartment(new Department(0, name, location));
+                    System.out.println("Department added.");
+                    break;
+                case 2:
+                    System.out.print("Enter ID: ");
+                    Department dept = service.getDepartmentById(sc.nextInt());
+                    System.out.println(dept != null ? dept : "Department not found.");
+                    break;
+                case 3:
+                    List<Department> list = service.getAllDepartments();
+                    list.forEach(System.out::println);
+                    break;
+                case 4:
+                    System.out.print("Enter ID to update: ");
+                    int upId = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("New Name: ");
+                    String upName = sc.nextLine();
+                    System.out.print("New Location: ");
+                    String upLoc = sc.nextLine();
+                    boolean updated = service.updateDepartment(new Department(upId, upName, upLoc));
+                    System.out.println(updated ? "Updated successfully." : "Update failed.");
+                    break;
+                case 5:
+                    System.out.print("Enter ID to delete: ");
+                    boolean deleted = service.deleteDepartment(sc.nextInt());
+                    System.out.println(deleted ? "Deleted successfully." : "Deletion failed.");
+                    break;
+                case 6:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+}
